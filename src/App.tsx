@@ -11,7 +11,7 @@ function App() {
     if (ban) {
       const data = {
         "ban": `"${ban}"`,
-        "eventID":"ÎLESONIQ"
+        "eventID": "ÎLESONIQ"
       }
       // base64 encode data into string
       const dataString = btoa(JSON.stringify(data));
@@ -24,9 +24,9 @@ function App() {
       <>
         <center>
           <p>Screenshot and crop between the lines</p>
-          <hr style={{margin: '1em 0em'}} />
-          <img alt={'top'} src={topImg} width={'500'} />
-          <div style={{height: "auto", margin: "0 auto", maxWidth: 275, width: "100%"}}>
+          <hr style={{margin: '1em 0em'}}/>
+          <img alt={'top'} src={topImg} style={{width: "100%", maxWidth: '500px'}}/>
+          <div style={{height: "auto", marginTop:'10px', marginLeft: 'auto', marginRight: 'auto', maxWidth: '250px', width: "100%"}}>
             <QRCode
               size={256}
               style={{height: "auto", maxWidth: "100%", width: "100%"}}
