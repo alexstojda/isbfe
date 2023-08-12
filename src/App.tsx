@@ -23,7 +23,7 @@ function App() {
 
   function onSubmit() {
     if (ban && (ban < 200000000 || ban > 599999999)) {
-      setError('Invalid number');
+      setError('number must be in range (200000000, 599999999)');
     } else {
       setError(undefined);
       setRenderScreenshot(true)
