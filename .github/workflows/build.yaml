@@ -10,6 +10,8 @@ jobs:
       id-token: write
       pages: write
     runs-on: ubuntu-latest
+    env:
+      PUBLIC_URL: https://alexstojda.github.io/isbfe
     steps:
       - uses: actions/checkout@v3
 
@@ -25,7 +27,6 @@ jobs:
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v2
         with:
-          # Upload entire repository
           path: build
       - name: Deploy to GitHub Pages
         id: deployment
