@@ -1,10 +1,12 @@
 import React, {useEffect} from 'react';
 import QRCode from "react-qr-code";
-import topImg from './top.png'
+import topImg from './topv2.jpeg';
+import midImg from './mid.png';
 
 function App() {
   const [renderScreenshot, setRenderScreenshot] = React.useState(false);
   const [ban, setBan] = React.useState<number>();
+  const [name, setName] = React.useState<string>();
   const [qrValue, setQrValue] = React.useState<string>();
   const [error, setError] = React.useState<string>();
 
@@ -34,9 +36,12 @@ function App() {
     return (
       <>
         <center>
-          <p>Screenshot and crop between the lines</p>
-          <hr style={{margin: '1em 0em'}}/>
-          <img alt={'top'} src={topImg} style={{width: "100%", maxWidth: '500px'}}/>
+          <div style={{width: "100%", maxWidth: '500px', height: '50px', backgroundColor: '#002A4B'}}>
+            <img alt={'top'} src={topImg} style={{display: 'block', height: '100%', float: 'left', opacity:'0'}}/>
+            <span style={{color: '#7E817B', lineHeight: '3em', fontSize: '1.1em'}}>Hi {name}</span>
+            <img alt={'top'} src={topImg} style={{display: 'block', height: '100%', float: 'right'}}/>
+          </div>
+          <img alt={'top'} src={midImg} style={{display: 'block', width: "100%", maxWidth: '500px'}}/>
           <div style={{height: "auto", marginTop:'10px', marginLeft: 'auto', marginRight: 'auto', maxWidth: '250px', width: "100%"}}>
             <QRCode
               size={256}
@@ -47,6 +52,7 @@ function App() {
           </div>
           <br/>
           <hr style={{marginTop: '4em'}}/>
+          <p>Crop above this line</p>
           <input type={'button'} value={'Back'} onClick={() => setRenderScreenshot(false)}/>
         </center>
       </>
@@ -63,6 +69,12 @@ function App() {
             onChange={(e) => setBan(parseInt(e.target.value))}
             placeholder={'enter number'}
             style={{width: '100%', height: '2em'}}
+          />
+          <input
+            type={'text'} value={name}
+            placeholder={'enter first name'}
+            onChange={(e) => setName(e.target.value)}
+            style={{width: '100%', height: '2em', marginTop: '0.5em'}}
           />
           <br/>
           <input
