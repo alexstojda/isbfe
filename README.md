@@ -1,3 +1,5 @@
+This project was created for experimental purposes only. Author is not responsible for improper usage of this experiment.
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).

@@ -6,9 +6,10 @@ function App() {
   const [renderScreenshot, setRenderScreenshot] = React.useState(false);
   const [ban, setBan] = React.useState<number>();
   const [qrValue, setQrValue] = React.useState<string>();
+  const [error, setError] = React.useState<string>();
 
   useEffect(() => {
-    if (ban) {
+    if (ban && renderScreenshot) {
       const data = {
         "ban": `"${ban}"`,
         "eventID": "ÎLESONIQ"
@@ -16,8 +17,18 @@ function App() {
       // base64 encode data into string
       const dataString = btoa(JSON.stringify(data));
       setQrValue(`01_${dataString}`)
+      setError(undefined);
     }
-  }, [ban]);
+  }, [ban, renderScreenshot]);
+
+  function onSubmit() {
+    if (ban && (ban < 200000000 || ban > 599999999)) {
+      setError('Invalid number');
+    } else {
+      setError(undefined);
+      setRenderScreenshot(true)
+    }
+  }
 
   if (renderScreenshot && qrValue) {
     return (
@@ -44,13 +55,12 @@ function App() {
     return (
       <center>
         <div style={{marginTop: '2em', width: '15em'}}>
+          {error && <p style={{color: 'red'}}>{error}</p>}
           <input
             type={'number'} value={ban}
             min={'200000000'}
             max={'599999999'}
-            onChange={
-              (e) => setBan(parseInt(e.target.value))
-            }
+            onChange={(e) => setBan(parseInt(e.target.value))}
             placeholder={'enter number'}
             style={{width: '100%', height: '2em'}}
           />
@@ -58,7 +68,7 @@ function App() {
           <input
             type={'button'}
             value={'Generate Screenshot'}
-            onClick={() => setRenderScreenshot(true)}
+            onClick={onSubmit}
             style={{width: '100%', height: '2em', marginTop: '1em'}}
           />
         </div>
