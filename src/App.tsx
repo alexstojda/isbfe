@@ -1,4 +1,4 @@
-import React, {useEffect} from 'react';
+import React, { useEffect } from 'react';
 import QRCode from "react-qr-code";
 import topImg from './top.jpeg';
 import midImg from './bottom.jpeg';
@@ -62,8 +62,8 @@ function App() {
   } else {
     return (
       <center>
-        <div style={{marginTop: '2em', width: '15em'}}>
-          {error && <p style={{color: 'red'}}>{error}</p>}
+        <div style={{ marginTop: '2em', width: '15em' }}>
+          {error && <p style={{ color: 'red' }}>{error}</p>}
           <label style={{ display: 'block' }}>
             Number:
             <input
@@ -92,13 +92,13 @@ function App() {
               }}
               style={{ width: '30%', height: '2em' }}
             />
-          <input
-            type={'button'}
-            value={'Generate Screenshot'}
-            onClick={onSubmit}
+            <input
+              type={'button'}
+              value={'Generate Screenshot'}
+              onClick={onSubmit}
               style={{ width: '70%', height: '2em', }}
-          />
-        </div>
+            />
+          </div>
         </div>
       </center>
     )
